@@ -15,9 +15,12 @@ assert str(f1) == f1_expected
 assert str(f2) == f2_expected
 assert str(f1 + f2) == '{} and {}'.format(f1_expected, f2_expected)
 assert str(f1 * f2) == '{} or {}'.format(f1_expected, f2_expected)
-assert str(f1 + f2 + f1 + f2) == '{} and {} and {} and {}'.format(f1_expected, f2_expected, f1_expected, f2_expected)
-assert str(f1 + f2 * f1) == '{} and {} or {}'.format(f1_expected, f2_expected, f1_expected)
-assert str(f2 + f3 + f4) == '{} and {} and {}'.format(f2_expected, f3_expected, f4_expected)
+assert str(f1 + f2 + f1 + f2) == '{} and {} and {} and {}'.format(
+    f1_expected, f2_expected, f1_expected, f2_expected)
+assert str(f1 + f2 * f1) == '{} and {} or {}'.format(
+    f1_expected, f2_expected, f1_expected)
+assert str(f2 + f3 + f4) == '{} and {} and {}'.format(
+    f2_expected, f3_expected, f4_expected)
 
 resp1 = YQL('yahoo.finance.quote').select().where(f1).run()
 resp2 = YQL('yahoo.finance.historicaldata').select().where(str(f2+f3+f4)).run()
